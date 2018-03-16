@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件-原生滑动按钮</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .button {
+            display: block;
+            position: absolute;
+            width: 240px;
+            height: 80px;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            border: 1px solid;
+            border-radius: 40px;/*圆角边框必须为高度的一半像素*/
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            overflow: hidden;
+        }
+        .button input[type='checkbox']{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+        .button span.on,.button span.off{
+            float: left;
+            display: block;
+            width: 50%;
+            height: 100%;
+            text-align: center;
+            line-height: 80px;
+            color: #fff;
+            font-size: 20px;
+            user-select: none;
+        }
+        .button span.on{
+            background-color: skyblue;
+        }
+        .button span.off{
+            background-color: yellowgreen;
+        }
+        .button .swiper-span{
+            position: absolute;
+            top: 0;
+            left: 35%;
+            width: 65%;
+            height: 100%;
+            border-radius: 40px;
+            background-color: #dddddd;
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <label class="button">
+        <input type="checkbox" id="swiper" checked>
+        <span class="on">on</span>
+        <span class="off">off</span>
+        <span class="swiper-span"></span>
+    </label>
+</div>
+<p id="pp">显示还是隐藏</p>
+<script>
+    var swiper = document.getElementById("swiper");
+    var pp = document.getElementById("pp");
+    var button = document.getElementsByClassName("button")[0];
+    var swiperSpan = document.getElementsByClassName("swiper-span")[0];
+    console.log(swiper.checked);
+    swiper.onclick = function () {
+        console.log(swiper.checked);
+//        swiperSpan.style.left === "35%" ? swiperSpan.style.left = 0 : swiperSpan.style.left = "35%";
+
+        if (swiper.checked){
+            pp.style.display = "block";
+            swiperSpan.style.left = "35%"
+        }else {
+            pp.style.display = "none";
+            swiperSpan.style.left = "0"
+        }
+    }
+
+</script>
+</body>
+</html>
